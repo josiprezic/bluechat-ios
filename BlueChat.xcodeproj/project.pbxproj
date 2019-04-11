@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		E288C1FB225E5D50000FB543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C1FA225E5D50000FB543 /* AppDelegate.swift */; };
-		E288C1FD225E5D50000FB543 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C1FC225E5D50000FB543 /* ViewController.swift */; };
-		E288C200225E5D50000FB543 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E288C1FE225E5D50000FB543 /* Main.storyboard */; };
 		E288C202225E5D51000FB543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E288C201225E5D51000FB543 /* Assets.xcassets */; };
 		E288C205225E5D51000FB543 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E288C203225E5D51000FB543 /* LaunchScreen.storyboard */; };
+		E288C20E225F064B000FB543 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C20D225F064B000FB543 /* DiscoverViewController.swift */; };
+		E288C210225F0659000FB543 /* DiscoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */; };
+		E288C215225F089C000FB543 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C214225F089C000FB543 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E288C1F7225E5D50000FB543 /* BlueChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E288C1FA225E5D50000FB543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E288C1FC225E5D50000FB543 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E288C1FF225E5D50000FB543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E288C201225E5D51000FB543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E288C204225E5D51000FB543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E288C206225E5D51000FB543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E288C20D225F064B000FB543 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverViewController.storyboard; sourceTree = "<group>"; };
+		E288C214225F089C000FB543 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,47 @@
 		E288C1F9225E5D50000FB543 /* BlueChat */ = {
 			isa = PBXGroup;
 			children = (
-				E288C1FA225E5D50000FB543 /* AppDelegate.swift */,
-				E288C1FC225E5D50000FB543 /* ViewController.swift */,
-				E288C1FE225E5D50000FB543 /* Main.storyboard */,
-				E288C201225E5D51000FB543 /* Assets.xcassets */,
-				E288C203225E5D51000FB543 /* LaunchScreen.storyboard */,
-				E288C206225E5D51000FB543 /* Info.plist */,
+				E288C212225F07F3000FB543 /* Resources */,
+				E288C211225F07D9000FB543 /* SupportingFiles */,
+				E288C213225F0882000FB543 /* ViewControllers */,
 			);
 			path = BlueChat;
+			sourceTree = "<group>";
+		};
+		E288C20C225F060D000FB543 /* DiscoveringViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E288C20D225F064B000FB543 /* DiscoverViewController.swift */,
+				E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */,
+			);
+			path = DiscoveringViewController;
+			sourceTree = "<group>";
+		};
+		E288C211225F07D9000FB543 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E288C203225E5D51000FB543 /* LaunchScreen.storyboard */,
+				E288C1FA225E5D50000FB543 /* AppDelegate.swift */,
+				E288C206225E5D51000FB543 /* Info.plist */,
+				E288C214225F089C000FB543 /* Extensions.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E288C212225F07F3000FB543 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E288C201225E5D51000FB543 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E288C213225F0882000FB543 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E288C20C225F060D000FB543 /* DiscoveringViewController */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +157,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E288C210225F0659000FB543 /* DiscoverViewController.storyboard in Resources */,
 				E288C205225E5D51000FB543 /* LaunchScreen.storyboard in Resources */,
 				E288C202225E5D51000FB543 /* Assets.xcassets in Resources */,
-				E288C200225E5D50000FB543 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E288C1FD225E5D50000FB543 /* ViewController.swift in Sources */,
+				E288C20E225F064B000FB543 /* DiscoverViewController.swift in Sources */,
+				E288C215225F089C000FB543 /* Extensions.swift in Sources */,
 				E288C1FB225E5D50000FB543 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +179,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E288C1FE225E5D50000FB543 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E288C1FF225E5D50000FB543 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E288C203225E5D51000FB543 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,7 +312,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLWQ546V2V;
-				INFOPLIST_FILE = BlueChat/Info.plist;
+				INFOPLIST_FILE = BlueChat/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +331,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLWQ546V2V;
-				INFOPLIST_FILE = BlueChat/Info.plist;
+				INFOPLIST_FILE = BlueChat/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
