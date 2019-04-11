@@ -75,10 +75,10 @@
 		E288C211225F07D9000FB543 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				E288C203225E5D51000FB543 /* LaunchScreen.storyboard */,
 				E288C1FA225E5D50000FB543 /* AppDelegate.swift */,
-				E288C206225E5D51000FB543 /* Info.plist */,
 				E288C214225F089C000FB543 /* Extensions.swift */,
+				E288C203225E5D51000FB543 /* LaunchScreen.storyboard */,
+				E288C206225E5D51000FB543 /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";

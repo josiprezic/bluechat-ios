@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    
     public class func fromStoryboard() -> Self {
         func fromStoryboardHelper<T>() -> T where T : UIViewController {
             let storyboard = UIStoryboard(name: String(describing: T.self), bundle: nil)
