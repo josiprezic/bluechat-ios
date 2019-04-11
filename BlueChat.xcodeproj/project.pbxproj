@@ -16,6 +16,10 @@
 		E2A09D84225F50B600961541 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A09D83225F50B600961541 /* BluetoothService.swift */; };
 		E2A09D87225F615F00961541 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A09D86225F615F00961541 /* ChatViewController.swift */; };
 		E2A09D89225F618200961541 /* ChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2A09D88225F618200961541 /* ChatViewController.storyboard */; };
+		E2C26777225FDBF8006407BE /* BluetoothServiceDeviceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C26776225FDBF8006407BE /* BluetoothServiceDeviceDelegate.swift */; };
+		E2C26779225FDC22006407BE /* BluetoothServiceMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C26778225FDC22006407BE /* BluetoothServiceMessageDelegate.swift */; };
+		E2C2677B225FDDFC006407BE /* BluetoothDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2677A225FDDFC006407BE /* BluetoothDevice.swift */; };
+		E2C2677D225FE52A006407BE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2677C225FE52A006407BE /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		E2A09D83225F50B600961541 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
 		E2A09D86225F615F00961541 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E2A09D88225F618200961541 /* ChatViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatViewController.storyboard; sourceTree = "<group>"; };
+		E2C26776225FDBF8006407BE /* BluetoothServiceDeviceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothServiceDeviceDelegate.swift; sourceTree = "<group>"; };
+		E2C26778225FDC22006407BE /* BluetoothServiceMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothServiceMessageDelegate.swift; sourceTree = "<group>"; };
+		E2C2677A225FDDFC006407BE /* BluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDevice.swift; sourceTree = "<group>"; };
+		E2C2677C225FE52A006407BE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,7 @@
 				E288C214225F089C000FB543 /* Extensions.swift */,
 				E288C203225E5D51000FB543 /* LaunchScreen.storyboard */,
 				E288C206225E5D51000FB543 /* Info.plist */,
+				E2C2677C225FE52A006407BE /* Constants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -110,7 +119,7 @@
 		E2A09D82225F509D00961541 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E2A09D83225F50B600961541 /* BluetoothService.swift */,
+				E2C26774225FDBCF006407BE /* BluetoothService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -122,6 +131,25 @@
 				E2A09D88225F618200961541 /* ChatViewController.storyboard */,
 			);
 			path = ChatViewController;
+			sourceTree = "<group>";
+		};
+		E2C26774225FDBCF006407BE /* BluetoothService */ = {
+			isa = PBXGroup;
+			children = (
+				E2A09D83225F50B600961541 /* BluetoothService.swift */,
+				E2C26775225FDBE0006407BE /* SupportingFiles */,
+			);
+			path = BluetoothService;
+			sourceTree = "<group>";
+		};
+		E2C26775225FDBE0006407BE /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E2C26776225FDBF8006407BE /* BluetoothServiceDeviceDelegate.swift */,
+				E2C26778225FDC22006407BE /* BluetoothServiceMessageDelegate.swift */,
+				E2C2677A225FDDFC006407BE /* BluetoothDevice.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +232,12 @@
 				E2A09D84225F50B600961541 /* BluetoothService.swift in Sources */,
 				E288C20E225F064B000FB543 /* DiscoverViewController.swift in Sources */,
 				E288C215225F089C000FB543 /* Extensions.swift in Sources */,
+				E2C26779225FDC22006407BE /* BluetoothServiceMessageDelegate.swift in Sources */,
+				E2C26777225FDBF8006407BE /* BluetoothServiceDeviceDelegate.swift in Sources */,
 				E2A09D87225F615F00961541 /* ChatViewController.swift in Sources */,
+				E2C2677B225FDDFC006407BE /* BluetoothDevice.swift in Sources */,
 				E288C1FB225E5D50000FB543 /* AppDelegate.swift in Sources */,
+				E2C2677D225FE52A006407BE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
