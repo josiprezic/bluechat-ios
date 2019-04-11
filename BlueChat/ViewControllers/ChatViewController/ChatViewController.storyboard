@@ -18,23 +18,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7jd-hl-BGX">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="636"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27t-BF-TJ9">
+                                <rect key="frame" x="20" y="676" width="374" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3N3-yO-lNF"/>
+                                </constraints>
+                                <state key="normal" title="Send foo"/>
+                                <connections>
+                                    <action selector="tempButtonPressed:" destination="OqN-of-CTx" eventType="touchUpInside" id="YdJ-p4-9ri"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1GU-8j-LFF" firstAttribute="trailing" secondItem="27t-BF-TJ9" secondAttribute="trailing" constant="20" id="GAW-NN-t5F"/>
                             <constraint firstItem="1GU-8j-LFF" firstAttribute="trailing" secondItem="7jd-hl-BGX" secondAttribute="trailing" id="NUt-Ga-c6e"/>
+                            <constraint firstItem="1GU-8j-LFF" firstAttribute="bottom" secondItem="27t-BF-TJ9" secondAttribute="bottom" constant="20" id="RKz-sH-eoe"/>
                             <constraint firstItem="7jd-hl-BGX" firstAttribute="leading" secondItem="1GU-8j-LFF" secondAttribute="leading" id="a3X-ba-4AF"/>
+                            <constraint firstItem="27t-BF-TJ9" firstAttribute="leading" secondItem="1GU-8j-LFF" secondAttribute="leading" constant="20" id="coU-8m-DWC"/>
                             <constraint firstItem="7jd-hl-BGX" firstAttribute="top" secondItem="1GU-8j-LFF" secondAttribute="top" id="iI8-jC-QBG"/>
-                            <constraint firstItem="1GU-8j-LFF" firstAttribute="bottom" secondItem="7jd-hl-BGX" secondAttribute="bottom" id="yCi-ei-Q1l"/>
+                            <constraint firstItem="1GU-8j-LFF" firstAttribute="bottom" secondItem="7jd-hl-BGX" secondAttribute="bottom" constant="80" id="yCi-ei-Q1l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1GU-8j-LFF"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="7jd-hl-BGX" id="JYg-rh-t5P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xO5-Tr-Ww3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1" y="153"/>
+            <point key="canvasLocation" x="0.0" y="152.44565217391306"/>
         </scene>
     </scenes>
 </document>

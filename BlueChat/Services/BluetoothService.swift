@@ -17,8 +17,14 @@ protocol BluetoothServiceMessageDelegate: class {
     func bluetoothService(didReceiveTextMessage message: String, fromPeripheral peripheral: BluetoothDevice)
 }
 
-struct BluetoothDevice {
+class BluetoothDevice {
     let name: String
+    let peripheral: CBPeripheral?
+    
+    init(name: String, peripheral: CBPeripheral? = nil) {
+        self.name = name
+        self.peripheral = peripheral
+    }
 }
 
 class BluetoothService: NSObject {
@@ -52,8 +58,12 @@ class BluetoothService: NSObject {
         centralManager?.scanForPeripherals(withServices: [serviceUUID], options: nil)
     }
     
+    final func connect(toDevice device: BluetoothDevice?) {
+        guard let peripheral = device?.peripheral else { return }
+        centralManager?.connect(peripheral, options: nil)
+    }
     
-    private final func sendMessage(message: String) {
+    final func sendMessage(message: String, toDevice: BluetoothDevice?) {
         let messageText = message
         guard let data = messageText.data(using: .utf8) else {print("Test 33"); return}
         guard let wc = writeCharacteristic else { print("Test 52"); return}
@@ -89,7 +99,7 @@ extension BluetoothService: CBCentralManagerDelegate {
         peripherals.append(peripheral)
         
         let devices = peripherals.map({ peripheral -> BluetoothDevice in
-            return BluetoothDevice(name: peripheral.name ?? "Device")
+            return BluetoothDevice(name: peripheral.name ?? "Device", peripheral: peripheral)
         })
         
         deviceDelegate?.bluetoothService(didChangePeripherals: devices)
@@ -161,7 +171,7 @@ extension BluetoothService: CBPeripheralDelegate {
                 if writeCharacteristic == nil {
                     self.writeCharacteristic = characteristic
                 }
-                sendMessage(message: "Test2")
+                sendMessage(message: "Test2", toDevice: nil)
                 return
                 
                 let messageText = "Test message"

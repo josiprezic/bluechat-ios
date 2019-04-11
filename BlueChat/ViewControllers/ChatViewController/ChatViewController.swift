@@ -11,9 +11,11 @@ import CoreBluetooth
 
 class ChatViewController: UIViewController {
 
-    var periferal: CBPeripheral?
+    var device: BluetoothDevice?
     var messages = [String]()
-    let tableView = UITableView()
+    //let tableView = UITableView()
+    @IBOutlet var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +24,18 @@ class ChatViewController: UIViewController {
         tableView.dataSource = self
         
         BluetoothService.shared.messageDelegate = self
+        BluetoothService.shared.connect(toDevice: device)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.addSubview(tableView)
-        tableView.frame = view.frame
+        //view.addSubview(tableView)
+        //tableView.frame = view.frame
+    }
+    
+    
+    @IBAction func tempButtonPressed(_ sender: Any) {
+        BluetoothService.shared.sendMessage(message: "Fooo", toDevice: device)
     }
 }
 
