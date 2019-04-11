@@ -29,7 +29,7 @@ class DiscoverViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        BluetoothService.shared.delegate = self
+        BluetoothService.shared.deviceDelegate = self
     }
 }
 
@@ -50,6 +50,9 @@ extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = ChatViewController.fromStoryboard()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -57,7 +60,7 @@ extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - EXTENSION - BluetoothServiceDelegate
 //
 
-extension DiscoverViewController: BluetoothServiceDelegate {
+extension DiscoverViewController: BluetoothServiceDeviceDelegate {
     func bluetoothService(didChangePeripherals peripherals: [BluetoothDevice]) {
         self.devices = peripherals
         tableView.reloadData()

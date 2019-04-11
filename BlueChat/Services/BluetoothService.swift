@@ -9,8 +9,12 @@
 import Foundation
 import CoreBluetooth
 
-protocol BluetoothServiceDelegate: class {
+protocol BluetoothServiceDeviceDelegate: class {
     func bluetoothService(didChangePeripherals peripherals: [BluetoothDevice])
+}
+
+protocol BluetoothServiceMessageDelegate: class {
+    func bluetoothService(didReceiveTextMessage message: String, fromPeripheral peripheral: BluetoothDevice)
 }
 
 struct BluetoothDevice {
@@ -27,7 +31,8 @@ class BluetoothService: NSObject {
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
     
-    weak var delegate: BluetoothServiceDelegate?
+    weak var deviceDelegate: BluetoothServiceDeviceDelegate?
+    weak var messageDelegate: BluetoothServiceMessageDelegate?
     
     private final var centralManager: CBCentralManager?
     private final var peripheralManager: CBPeripheralManager?
@@ -87,7 +92,7 @@ extension BluetoothService: CBCentralManagerDelegate {
             return BluetoothDevice(name: peripheral.name ?? "Device")
         })
         
-        delegate?.bluetoothService(didChangePeripherals: devices)
+        deviceDelegate?.bluetoothService(didChangePeripherals: devices)
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -135,6 +140,7 @@ extension BluetoothService: CBPeripheralManagerDelegate {
                 let messageText = String(data: value, encoding: String.Encoding.utf8) as! String
                 debugPrint("message text: \(messageText)")
                 self.peripheralManager?.respond(to: request, withResult: .success)
+                messageDelegate?.bluetoothService(didReceiveTextMessage: messageText, fromPeripheral: BluetoothDevice(name: "Some device"))
             }
         }
     }
