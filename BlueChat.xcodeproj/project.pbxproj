@@ -11,7 +11,6 @@
 		E288C202225E5D51000FB543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E288C201225E5D51000FB543 /* Assets.xcassets */; };
 		E288C205225E5D51000FB543 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E288C203225E5D51000FB543 /* LaunchScreen.storyboard */; };
 		E288C20E225F064B000FB543 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C20D225F064B000FB543 /* DiscoverViewController.swift */; };
-		E288C210225F0659000FB543 /* DiscoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */; };
 		E288C215225F089C000FB543 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C214225F089C000FB543 /* Extensions.swift */; };
 		E2A09D84225F50B600961541 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A09D83225F50B600961541 /* BluetoothService.swift */; };
 		E2A09D87225F615F00961541 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A09D86225F615F00961541 /* ChatViewController.swift */; };
@@ -29,7 +28,6 @@
 		E288C204225E5D51000FB543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E288C206225E5D51000FB543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E288C20D225F064B000FB543 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
-		E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverViewController.storyboard; sourceTree = "<group>"; };
 		E288C214225F089C000FB543 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E2A09D83225F50B600961541 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
 		E2A09D86225F615F00961541 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				E288C20D225F064B000FB543 /* DiscoverViewController.swift */,
-				E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */,
 			);
 			path = DiscoveringViewController;
 			sourceTree = "<group>";
@@ -215,7 +212,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E288C210225F0659000FB543 /* DiscoverViewController.storyboard in Resources */,
 				E288C205225E5D51000FB543 /* LaunchScreen.storyboard in Resources */,
 				E288C202225E5D51000FB543 /* Assets.xcassets in Resources */,
 				E2A09D89225F618200961541 /* ChatViewController.storyboard in Resources */,

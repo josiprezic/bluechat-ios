@@ -15,8 +15,8 @@ class DiscoverViewController: UIViewController {
     // MARK: - Variables
     //
     
-    private final var devices = [BluetoothDevice]()
     private final let tableView = UITableView()
+    private final var devices = [BluetoothDevice]()
     
     //
     // MARK: - View methods
@@ -24,12 +24,32 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        BluetoothService.shared.deviceDelegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureView()
+    }
+    
+    //
+    // MARK: - Methods
+    //
+    
+    private final func configureView() {
+        configureNavigationBar()
+        configureTableView()
+    }
+    
+    private final func configureNavigationBar() {
+        title = Constants.DiscoverViewController.title
+    }
+    
+    private final func configureTableView() {
         tableView.frame = view.frame
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        BluetoothService.shared.deviceDelegate = self
     }
 }
 
@@ -66,5 +86,3 @@ extension DiscoverViewController: BluetoothServiceDeviceDelegate {
         tableView.reloadData()
     }
 }
-
-
