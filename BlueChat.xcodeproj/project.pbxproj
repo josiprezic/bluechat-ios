@@ -13,6 +13,7 @@
 		E288C20E225F064B000FB543 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C20D225F064B000FB543 /* DiscoverViewController.swift */; };
 		E288C210225F0659000FB543 /* DiscoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */; };
 		E288C215225F089C000FB543 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C214225F089C000FB543 /* Extensions.swift */; };
+		E2A09D84225F50B600961541 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A09D83225F50B600961541 /* BluetoothService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E288C20D225F064B000FB543 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		E288C20F225F0659000FB543 /* DiscoverViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverViewController.storyboard; sourceTree = "<group>"; };
 		E288C214225F089C000FB543 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E2A09D83225F50B600961541 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				E288C212225F07F3000FB543 /* Resources */,
 				E288C211225F07D9000FB543 /* SupportingFiles */,
+				E2A09D82225F509D00961541 /* Services */,
 				E288C213225F0882000FB543 /* ViewControllers */,
 			);
 			path = BlueChat;
@@ -99,6 +102,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		E2A09D82225F509D00961541 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E2A09D83225F50B600961541 /* BluetoothService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,6 +142,11 @@
 				TargetAttributes = {
 					E288C1F6225E5D50000FB543 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -170,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2A09D84225F50B600961541 /* BluetoothService.swift in Sources */,
 				E288C20E225F064B000FB543 /* DiscoverViewController.swift in Sources */,
 				E288C215225F089C000FB543 /* Extensions.swift in Sources */,
 				E288C1FB225E5D50000FB543 /* AppDelegate.swift in Sources */,

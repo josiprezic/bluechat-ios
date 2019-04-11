@@ -80,13 +80,22 @@ extension DiscoverViewController: CBCentralManagerDelegate {
         peripherals.append(peripheral)
         tableView.reloadData()
         if peripheral != nil {
-            print("**********************************")
+            /*print("**********************************")
             print("Found new pheripheral devices with services")
             print("Peripheral name: \(String(describing: peripheral.name))")
             print ("Advertisement Data : \(advertisementData)")
             print("ID: \(peripheral.identifier)")
             print("**********************************")
-        }
+        */}
+    }
+    
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        peripheral.delegate = self
+        peripheral.discoverServices(nil)
+        
+//        let messageText = "Poruka text text texttttttt"
+//        guard let data = messageText.data(using: .utf8) else {print("aaaaaa"); return}
+//        peripheral.writeValue(data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
     }
 }
 
@@ -111,10 +120,51 @@ extension DiscoverViewController: CBPeripheralManagerDelegate {
         case .poweredOn:
             debugPrint("poweredOn")
             //let advertisementData = String(format: "%@|%d|%d", "userData.name", "userData.avatarId", "userData.colorId")
-            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[serviceUUID],
-                                                CBAdvertisementDataLocalNameKey: "Jopara"])
+            
+            
+            
+            let serialService = CBMutableService(type: serviceUUID, primary: true)
+            
+            let WR_UUID = CBUUID(string: "2C6FAC6E-E353-4AAF-87B9-E37AB409AF17")
+            let WR_PROPERTIES: CBCharacteristicProperties = .write
+            let WR_PERMISSIONS: CBAttributePermissions = .writeable
+            let writeCharacteristics = CBMutableCharacteristic(type: WR_UUID, properties: WR_PROPERTIES, value: nil, permissions: WR_PERMISSIONS)
+            serialService.characteristics = [writeCharacteristics]
+            peripheralManager?.add(serialService)
+            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[serviceUUID], CBAdvertisementDataLocalNameKey: "Jopara"])
         @unknown default:
             debugPrint("default")
+        }
+    }
+    
+    func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+        print("didReceiveWrite requests")
+        for request in requests {
+            if let value = request.value {
+                let messageText = String(data: value, encoding: String.Encoding.utf8) as! String
+                debugPrint("message text: \(messageText)")
+                self.peripheralManager?.respond(to: request, withResult: .success)
+            }
+        }
+    }
+}
+
+extension DiscoverViewController: CBPeripheralDelegate {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        for service in peripheral.services! {
+            peripheral.discoverCharacteristics(nil, for: service)
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        for characteristic in service.characteristics! {
+            let characteristic = characteristic as CBCharacteristic
+            print("current UUID: \(characteristic.uuid.uuidString)")
+            if characteristic.uuid.uuidString.isEqual("2C6FAC6E-E353-4AAF-87B9-E37AB409AF17") {
+                let messageText = "Test message"
+                guard let data = messageText.data(using: .utf8) else {print("aaaaaa"); return}
+                peripheral.writeValue(data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+            }
         }
     }
 }
@@ -132,6 +182,7 @@ extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        centralManager?.connect(peripherals[indexPath.row], options: nil)
     }
 }
 
