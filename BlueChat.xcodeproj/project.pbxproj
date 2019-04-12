@@ -60,7 +60,6 @@
 				D0755219526E7DF6271E2FCE /* Pods-BlueChat.debug.xcconfig */,
 				80A257A905FE7EA3CD4250B0 /* Pods-BlueChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -116,7 +115,6 @@
 				E288C214225F089C000FB543 /* Extensions.swift */,
 				E288C203225E5D51000FB543 /* LaunchScreen.storyboard */,
 				E288C206225E5D51000FB543 /* Info.plist */,
-				E2C2677C225FE52A006407BE /* Constants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -125,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				E288C201225E5D51000FB543 /* Assets.xcassets */,
+				E2C2677C225FE52A006407BE /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
