@@ -17,4 +17,9 @@ struct Constants {
     struct DiscoverViewController {
         static let title = "Available Devices"
     }
+    
+    struct ChatViewController {
+        static let unknownDevice = "Unknown device"
+        static let send = "Send"
+    }
 }
