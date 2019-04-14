@@ -65,7 +65,7 @@ extension DiscoverViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = ChatViewController.fromStoryboard()
+        let vc = ChatViewController()
         vc.device = devices[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
