@@ -2,20 +2,19 @@
 //  DiscoverViewController.swift
 //  BlueChat
 //
-//  Created by Korisnik on 11/04/2019.
+//  Created by Josip Rezic on 11/04/2019.
 //  Copyright © 2019 Josip Rezic. All rights reserved.
 //
 
 import UIKit
 import CoreBluetooth
 
-class DiscoverViewController: UIViewController {
+class DiscoverViewController: UITableViewController {
     
     //
     // MARK: - Variables
     //
     
-    private final let tableView = UITableView()
     private final var devices = [BluetoothDevice]()
     
     //
@@ -45,30 +44,25 @@ class DiscoverViewController: UIViewController {
         title = Constants.DiscoverViewController.title
     }
     
-    private final func configureTableView() {
-        tableView.frame = view.frame
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
+    private final func configureTableView() {}
 }
 
 //
 // MARK: - EXTENSION - UITableViewDelegate, UITableViewDataSource
 //
 
-extension DiscoverViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension DiscoverViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return devices.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = devices[indexPath.row].name
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = ChatViewController.fromStoryboard()
         vc.device = devices[indexPath.row]
