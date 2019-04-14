@@ -13,9 +13,11 @@ class ChatViewController: UIViewController {
 
     var device: BluetoothDevice?
     var messages = [String]()
-    //let tableView = UITableView()
-    @IBOutlet var tableView: UITableView!
     
+    let tableView = UITableView()
+    let newMesssageContainer = UIView()
+    let btnSend = UIButton()
+    let tfMessage = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,58 @@ class ChatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //view.addSubview(tableView)
-        //tableView.frame = view.frame
+        configureView()
     }
+    
+    private final func configureView() {
+        title = device?.name ?? "Unknown device"
+        configureTableView()
+        configureNewMessageContainer()
+    }
+    
+    private final func configureTableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            [make.top, make.left, make.right].forEach { c in c.equalToSuperview() }
+            make.bottom.equalToSuperview().offset(-50)
+        }
+    }
+    
+    private final func configureNewMessageContainer() {
+        view.addSubview(newMesssageContainer)
+        view.backgroundColor = .green
+        newMesssageContainer.snp.makeConstraints { make in
+            [make.left, make.bottom, make.right].forEach { c in c.equalToSuperview() }
+            make.top.equalTo(tableView.snp.bottom)
+        }
+        configureSendMessageButton()
+        configureMessageTextField()
+        
+    }
+    
+    private final func configureSendMessageButton() {
+        newMesssageContainer.addSubview(btnSend)
+        btnSend.backgroundColor = .blue
+        btnSend.setTitle("Send", for: .normal)
+        btnSend.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.right.equalToSuperview().offset(-5)
+            make.bottom.equalToSuperview().offset(-5)
+            make.width.equalTo(70)
+        }
+    }
+    
+    private final func configureMessageTextField() {
+        newMesssageContainer.addSubview(tfMessage)
+        tfMessage.backgroundColor = .red
+        tfMessage.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.bottom.equalToSuperview().offset(-5)
+            make.left.equalToSuperview().offset(5)
+            make.right.equalTo(btnSend.snp.left).offset(-5)
+        }
+    }
+
     
     
     @IBAction func tempButtonPressed(_ sender: Any) {
