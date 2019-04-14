@@ -74,6 +74,7 @@ class ChatViewController: UIViewController {
     
     private final func configureSendMessageButton() {
         newMesssageContainer.addSubview(btnSend)
+        btnSend.addTarget(self, action: #selector(sendButtonPressed), for: .touchUpInside)
         btnSend.backgroundColor = UIHelper.Colors.btnSendMessageBackground
         btnSend.setTitle(Constants.ChatViewController.send, for: .normal)
         btnSend.snp.makeConstraints { make in
@@ -94,14 +95,23 @@ class ChatViewController: UIViewController {
             make.right.equalTo(btnSend.snp.left).offset(-5)
         }
     }
-
+    
+    //
+    // MARK: - Methods
+    //
+    
+    private final func sendMessage() {
+        guard let messageText = tfMessage.text, !messageText.isEmpty else { return }
+        BluetoothService.shared.sendMessage(message: messageText, toDevice: device)
+        tfMessage.text = ""
+    }
     
     //
     // MARK: - Actions
     //
     
-    @IBAction func tempButtonPressed(_ sender: Any) {
-        BluetoothService.shared.sendMessage(message: "Fooo", toDevice: device)
+    @objc private final func sendButtonPressed() {
+        sendMessage()
     }
 }
 
