@@ -59,6 +59,7 @@ extension DiscoverViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = devices[indexPath.row].name
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     

@@ -42,10 +42,9 @@ class BluetoothService: NSObject {
     private final var peripherals: [CBPeripheral] = []
     
     private final let serviceUUID: CBUUID = CBUUID(string: Constants.BluetoothService.bluetoothServiceUUID)
-    private final let WR_UUID = CBUUID(string: Constants.BluetoothService.bluetoothWriteChatacteristicsUUID) 
-    private final let WR_PROPERTIES: CBCharacteristicProperties = .write
-    private final let WR_PERMISSIONS: CBAttributePermissions = .writeable
-    
+    private final let writeCharacteristicUUID = CBUUID(string: Constants.BluetoothService.bluetoothWriteChatacteristicsUUID) 
+    private final let writeCharacteristicProperty: CBCharacteristicProperties = .write
+    private final let writeCharacteristicPermission: CBAttributePermissions = .writeable
     private final var writeCharacteristic: CBCharacteristic?
     
     //
@@ -71,7 +70,7 @@ class BluetoothService: NSObject {
     final func sendMessage(message: String, toDevice device: BluetoothDevice?) {
         let messageText = message
         guard let data = messageText.data(using: .utf8) else { return }
-        guard let wc = writeCharacteristic else { print("Test 52"); return}
+        guard let wc = writeCharacteristic else { return}
         peripherals[device?.id ?? 0].writeValue(data, for: wc, type: CBCharacteristicWriteType.withResponse)
     }
 }
@@ -111,7 +110,7 @@ extension BluetoothService: CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         guard peripheral.state == .poweredOn else { return }
         let serialService = CBMutableService(type: serviceUUID, primary: true)
-        let writeCharacteristics = CBMutableCharacteristic(type: WR_UUID, properties: WR_PROPERTIES, value: nil, permissions: WR_PERMISSIONS)
+        let writeCharacteristics = CBMutableCharacteristic(type: writeCharacteristicUUID, properties: writeCharacteristicProperty, value: nil, permissions: writeCharacteristicPermission)
         serialService.characteristics = [writeCharacteristics]
         peripheralManager?.add(serialService)
         peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[serviceUUID], CBAdvertisementDataLocalNameKey: "Jopara"])
@@ -139,7 +138,7 @@ extension BluetoothService: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         for characteristic in service.characteristics! {
             let characteristic = characteristic as CBCharacteristic
-            guard characteristic.uuid.uuidString.isEqual(WR_UUID.uuidString) else { continue }
+            guard characteristic.uuid.uuidString.isEqual(writeCharacteristicUUID.uuidString) else { continue }
         
             if writeCharacteristic == nil {
                 self.writeCharacteristic = characteristic

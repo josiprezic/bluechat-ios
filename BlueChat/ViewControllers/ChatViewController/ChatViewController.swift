@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreBluetooth
+import SnapKit
 
 class ChatViewController: UIViewController {
 
