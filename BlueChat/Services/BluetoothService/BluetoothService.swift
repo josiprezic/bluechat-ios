@@ -54,7 +54,8 @@ class BluetoothService: NSObject {
     private final func startScan() {
         debugPrint("Start scanning...")
         peripherals = []
-        centralManager?.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        let options = [CBCentralManagerScanOptionAllowDuplicatesKey: false]
+        centralManager?.scanForPeripherals(withServices: [serviceUUID], options: options)
         // TODO: Add timer
     }
     

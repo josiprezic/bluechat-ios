@@ -64,8 +64,10 @@ class ChatViewController: UIViewController {
             [make.left, make.bottom, make.right].forEach { c in c.equalToSuperview() }
             make.top.equalTo(tableView.snp.bottom)
         }
+        
         configureSendMessageButton()
         configureMessageTextField()
+        
         [tfMessage, btnSend].forEach { view in
             view.layer.cornerRadius = 9.0
             view.clipsToBounds = true
