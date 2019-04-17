@@ -29,10 +29,11 @@ class DiscoverViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureView()
+        startScanning()
     }
     
     //
-    // MARK: - Methods
+    // MARK: - UI methods
     //
     
     private final func configureView() {
@@ -45,6 +46,18 @@ class DiscoverViewController: UITableViewController {
     }
     
     private final func configureTableView() {}
+    
+    //
+    // MARK: - Methods
+    //
+    
+    private final func startScanning() {
+        if BluetoothService.shared.isBluetoothPoweredOn {
+            BluetoothService.shared.startScan()
+        } else {
+            // TODO: show error
+        }
+    }
 }
 
 //

@@ -49,17 +49,13 @@ class BluetoothService: NSObject {
     
     private(set) var localDeviceName = "Unknown Device"
     
+    var isBluetoothPoweredOn: Bool {
+        return centralManager?.state == .poweredOn
+    }
+    
     //
     // MARK: - Private methods
     //
-    
-    private final func startScan() {
-        debugPrint("Start scanning...")
-        peripherals = []
-        let options = [CBCentralManagerScanOptionAllowDuplicatesKey: false]
-        centralManager?.scanForPeripherals(withServices: [serviceUUID], options: options)
-        // TODO: Add timer
-    }
     
     //
     // MARK: - Public methods
@@ -67,6 +63,15 @@ class BluetoothService: NSObject {
     
     final func setUsername(_ username: String) {
         localDeviceName = username
+    }
+    
+    final func startScan() {
+        guard centralManager?.state == .poweredOn else { return }
+        debugPrint("Start scanning...")
+        peripherals = []
+        let options = [CBCentralManagerScanOptionAllowDuplicatesKey: false]
+        centralManager?.scanForPeripherals(withServices: [serviceUUID], options: options)
+        // TODO: Add timer
     }
     
     final func connect(toDevice device: BluetoothDevice?) {
@@ -89,7 +94,7 @@ class BluetoothService: NSObject {
 extension BluetoothService: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         guard central.state == .poweredOn else { return }
-        startScan()
+        //()startScan
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
