@@ -47,6 +47,8 @@ class BluetoothService: NSObject {
     private final let writeCharacteristicPermission: CBAttributePermissions = .writeable
     private final var writeCharacteristic: CBCharacteristic?
     
+    private(set) var localDeviceName = "Unknown Device"
+    
     //
     // MARK: - Private methods
     //
@@ -62,6 +64,10 @@ class BluetoothService: NSObject {
     //
     // MARK: - Public methods
     //
+    
+    final func setUsername(_ username: String) {
+        localDeviceName = username
+    }
     
     final func connect(toDevice device: BluetoothDevice?) {
         guard let peripheral = device?.peripheral else { return }
@@ -114,7 +120,7 @@ extension BluetoothService: CBPeripheralManagerDelegate {
         let writeCharacteristics = CBMutableCharacteristic(type: writeCharacteristicUUID, properties: writeCharacteristicProperty, value: nil, permissions: writeCharacteristicPermission)
         serialService.characteristics = [writeCharacteristics]
         peripheralManager?.add(serialService)
-        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[serviceUUID], CBAdvertisementDataLocalNameKey: "Jopara"])
+        peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey:[serviceUUID], CBAdvertisementDataLocalNameKey: localDeviceName])
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		613073EA40E104126C940AAC /* Pods_BlueChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB7F5944EDEC4572C244C0 /* Pods_BlueChat.framework */; };
+		E211F1262267AE7300FDFC59 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E211F1252267AE7300FDFC59 /* WelcomeViewController.swift */; };
 		E254B0F42263D02400382E14 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E254B0F32263D02400382E14 /* UIHelper.swift */; };
 		E288C1FB225E5D50000FB543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288C1FA225E5D50000FB543 /* AppDelegate.swift */; };
 		E288C202225E5D51000FB543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E288C201225E5D51000FB543 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		80A257A905FE7EA3CD4250B0 /* Pods-BlueChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueChat.release.xcconfig"; path = "Target Support Files/Pods-BlueChat/Pods-BlueChat.release.xcconfig"; sourceTree = "<group>"; };
 		A0BB7F5944EDEC4572C244C0 /* Pods_BlueChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0755219526E7DF6271E2FCE /* Pods-BlueChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueChat.debug.xcconfig"; path = "Target Support Files/Pods-BlueChat/Pods-BlueChat.debug.xcconfig"; sourceTree = "<group>"; };
+		E211F1252267AE7300FDFC59 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E254B0F32263D02400382E14 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		E288C1F7225E5D50000FB543 /* BlueChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E288C1FA225E5D50000FB543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 				A0BB7F5944EDEC4572C244C0 /* Pods_BlueChat.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E211F1242267AE5900FDFC59 /* WelcomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E211F1252267AE7300FDFC59 /* WelcomeViewController.swift */,
+			);
+			path = WelcomeViewController;
 			sourceTree = "<group>";
 		};
 		E254B0F02263CFF000382E14 /* Helpers */ = {
@@ -140,6 +150,7 @@
 		E288C213225F0882000FB543 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E211F1242267AE5900FDFC59 /* WelcomeViewController */,
 				E288C20C225F060D000FB543 /* DiscoveringViewController */,
 				E2A09D85225F613D00961541 /* ChatViewController */,
 			);
@@ -309,6 +320,7 @@
 			files = (
 				E2A09D84225F50B600961541 /* BluetoothService.swift in Sources */,
 				E288C20E225F064B000FB543 /* DiscoverViewController.swift in Sources */,
+				E211F1262267AE7300FDFC59 /* WelcomeViewController.swift in Sources */,
 				E288C215225F089C000FB543 /* Extensions.swift in Sources */,
 				E254B0F42263D02400382E14 /* UIHelper.swift in Sources */,
 				E2C26779225FDC22006407BE /* BluetoothServiceMessageDelegate.swift in Sources */,

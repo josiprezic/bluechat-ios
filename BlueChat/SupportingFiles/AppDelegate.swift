@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private final func configureApplicationWindow() {
-        let navigationController = UINavigationController(rootViewController: DiscoverViewController())
+        let navigationController = UINavigationController(rootViewController: WelcomeViewController())
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.backgroundColor = .white
