@@ -74,6 +74,10 @@ class BluetoothService: NSObject {
         // TODO: Add timer
     }
     
+    final func stopScan() {
+        centralManager?.stopScan()
+    }
+    
     final func connect(toDevice device: BluetoothDevice?) {
         guard let peripheral = device?.peripheral else { return }
         centralManager?.connect(peripheral, options: nil)
