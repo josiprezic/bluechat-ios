@@ -43,9 +43,15 @@ class DiscoverViewController: UITableViewController {
     
     private final func configureNavigationBar() {
         title = Constants.DiscoverViewController.title
+        configureStopScanButton()
     }
     
     private final func configureTableView() {}
+    
+    private final func configureStopScanButton() {
+        let btn = UIBarButtonItem(title: "Stop", style: .done, target: self, action: #selector(stopScanning))
+        navigationItem.rightBarButtonItem = btn
+    }
     
     //
     // MARK: - Methods
@@ -57,6 +63,10 @@ class DiscoverViewController: UITableViewController {
         } else {
             // TODO: show error
         }
+    }
+    
+    @objc private final func stopScanning() {
+        BluetoothService.shared.stopScan()
     }
 }
 
